@@ -18,8 +18,9 @@ namespace Asteroids
             }
             else
             {
-                _hp--;
+                _hp-=10;
             }
+            Debug.Log(_hp);
             return _hp;
         }
 

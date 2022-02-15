@@ -8,7 +8,7 @@ namespace Asteroids
         private Camera _camera;
         private Ship _ship;
         private FireShip _fire;
-        private DamageObject _damageObject;
+        private Health _health;
 
         private void Start()
         {
@@ -17,7 +17,8 @@ namespace Asteroids
             var rotation = new RotationShip(transform);
             _ship = new Ship(moveTransform, rotation);
             _fire = new FireShip(_barrel);
-            _damageObject = new DamageObject(_hp);
+            _health = new Health(_hp, _hp);
+
         }
 
         private void Update()
@@ -47,7 +48,9 @@ namespace Asteroids
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            _hp = _damageObject.Damage(gameObject);
+             _health.ChangeCurrentHealth(_health.Current - 5f);
+            _hp = _health.Current;
+            Debug.Log(_hp);
         }
     }
 }
