@@ -10,6 +10,10 @@ namespace Asteroids
 
         public float Speed { get; protected set; }
 
+        //public MoveTransform(float speed)
+        //{
+        //    Speed = speed;
+        //}
         public MoveTransform(GameObject moveObject, float speed)
         {
             _moveObject = moveObject;
@@ -18,9 +22,12 @@ namespace Asteroids
 
         public void Move(float horizontal, float vertical, float deltaTime)
         {
+            //var speed = deltaTime * Speed;
+            //_move.Set(horizontal * speed, vertical * speed, 0.0f);
+            //_moveObject.GetComponent<Rigidbody2D>().AddForce(_move);
             var speed = deltaTime * Speed;
             _move.Set(horizontal * speed, vertical * speed, 0.0f);
-            _moveObject.GetComponent<Rigidbody2D>().AddForce(_move);
-         }
+            _moveObject.transform.localPosition += _move;
+        }
     }
 }

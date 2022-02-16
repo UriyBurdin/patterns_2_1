@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class Bullet : Ammo
+    internal sealed class Asteroid2 : Enemy
     {
         private void Start()
         {
@@ -13,8 +13,6 @@ namespace Asteroids
             Health.ChangeCurrentHealth(Health.Current - 20f);
             Debug.Log(Health.Current);
         }
-
-        
 
     }
 }

@@ -48,7 +48,7 @@ namespace Asteroids.Object_Pool
             var bullet = bullets.FirstOrDefault(a => !a.gameObject.activeSelf);
             if (bullet == null)
             {
-                var newBullet = Resources.Load<Bullet>("Ammo/Bullet");
+                 var newBullet = Resources.Load<Bullet>("Ammo/Bullet");
                 for (var i = 0; i < _capacityPool; i++)
                 {
                     var instantiate = Object.Instantiate(newBullet);

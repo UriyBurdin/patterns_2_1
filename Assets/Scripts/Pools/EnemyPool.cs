@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -26,10 +27,20 @@ namespace Asteroids.Object_Pool
         public Enemy GetEnemy(string type)
         {
             Enemy result;
-            switch (type)
+            string pathLoad = "Enemy/" + type;
+                 switch (type)
             {
                 case "Asteroid":
-                    result = GetAsteroid(GetListEnemies(type));
+                    result = GetAsteroid(GetListEnemies(type), Resources.Load<Asteroid> (pathLoad));
+                    break;
+                case "Asteroid2":
+                    result = GetAsteroid(GetListEnemies(type), Resources.Load<Asteroid2>(pathLoad));
+                    break;
+                case "Asteroid3":
+                    result = GetAsteroid(GetListEnemies(type), Resources.Load<Asteroid3>(pathLoad));
+                    break;
+                case "EmemyShip":
+                    result = GetAsteroid(GetListEnemies(type), Resources.Load<EmemyShip>(pathLoad));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, "Не предусмотрен в программе");
@@ -40,15 +51,14 @@ namespace Asteroids.Object_Pool
 
         private HashSet<Enemy> GetListEnemies(string type)
         {
-            return _enemyPool.ContainsKey(type) ? _enemyPool[type] : _enemyPool[type] = new HashSet<Enemy>();
+               return _enemyPool.ContainsKey(type) ? _enemyPool[type] : _enemyPool[type] = new HashSet<Enemy>();
         }
 
-        private Enemy GetAsteroid(HashSet<Enemy> enemies)
+        private Enemy GetAsteroid(HashSet<Enemy> enemies, Enemy newEnemy)
         {
             var enemy = enemies.FirstOrDefault(a => !a.gameObject.activeSelf);
             if (enemy == null)
             {
-                var newEnemy = Resources.Load<Asteroid>("Enemy/Asteroid");
                 for (var i = 0; i < _capacityPool; i++)
                 {
                     var instantiate = Object.Instantiate(newEnemy);
@@ -56,7 +66,7 @@ namespace Asteroids.Object_Pool
                     enemies.Add(instantiate);
                 }
 
-                GetAsteroid(enemies);
+                GetAsteroid(enemies, newEnemy);
             }
             enemy = enemies.FirstOrDefault(a => !a.gameObject.activeSelf);
             return enemy;

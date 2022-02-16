@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 namespace Asteroids
@@ -6,7 +7,7 @@ namespace Asteroids
     {
 
         private Camera _camera;
-        private Ship _ship;
+        private Moving _ship;
         private FireShip _fire;
         private Health _health;
 
@@ -15,14 +16,22 @@ namespace Asteroids
             _camera = Camera.main;
             var moveTransform = new AccelerationMove(gameObject, _speed, _acceleration);
             var rotation = new RotationShip(transform);
-            _ship = new Ship(moveTransform, rotation);
+            _ship = new Moving(moveTransform, rotation);
             _fire = new FireShip(_barrel);
             _health = new Health(_hp, _hp);
+           
+            
+
+
 
         }
 
         private void Update()
         {
+            var direction = Input.mousePosition - _camera.WorldToScreenPoint(transform.position);
+            _ship.Rotation(direction);
+            _ship.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
+
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 _ship.AddAcceleration();
@@ -37,13 +46,6 @@ namespace Asteroids
             {
                 _fire.Fire(_bullet, _force);
             }
-        }
-
-        private void FixedUpdate()
-        {
-            var direction = Input.mousePosition - _camera.WorldToScreenPoint(transform.position);
-            _ship.Rotation(direction);
-            _ship.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

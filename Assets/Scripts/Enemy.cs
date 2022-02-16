@@ -5,10 +5,30 @@ namespace Asteroids
 {
     internal abstract class Enemy : MonoBehaviour
     {
-
+        private Camera _camera;
         private Transform _rotPool;
         private Health _health;
+        public Transform target;
 
+        public float _speed = 0.1f;
+        public float _acceleration = 50f;
+        private Moving _thisMoving;
+
+        public void Initialization()
+        {
+            _camera = Camera.main;
+            var moveTransform = new AccelerationMove(gameObject, _speed, _acceleration);
+            var rotation = new RotationShip(transform);
+            _thisMoving = new Moving(moveTransform, rotation);
+        }
+
+        public void Execute()
+        {
+            var direction = target.transform.position -  transform.position;
+            _thisMoving.Rotation(direction);
+            _thisMoving.Move(direction.x, direction.y, Time.deltaTime);
+            // thisMoving.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
+       }
         public Health Health
         {
             get
@@ -37,12 +57,12 @@ namespace Asteroids
             }
         }
 
-        public static Asteroid CreateAsteroidEnemy(Health hp)
-        {
-            var enemy = Instantiate(Resources.Load<Asteroid>("Enemy/Asteroid"));
-            enemy.Health = hp;
-            return enemy;
-        }
+        //public static Asteroid CreateAsteroidEnemy(Health hp)
+        //{
+        //    var enemy = Instantiate(Resources.Load<Asteroid>("Enemy/Asteroid"));
+        //    enemy.Health = hp;
+        //    return enemy;
+        //}
 
         public void ActiveEnemy(Vector3 position, Quaternion rotation)
         {

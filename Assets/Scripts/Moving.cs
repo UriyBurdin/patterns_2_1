@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class Ship : IMove, IRotation
+    internal sealed class Moving : IMove, IRotation
     {
         private readonly IMove _moveImplementation;
         private readonly IRotation _rotationImplementation;
 
         public float Speed => _moveImplementation.Speed;
 
-        public Ship(IMove moveImplementation, IRotation rotationImplementation)
+        public Moving(IMove moveImplementation, IRotation rotationImplementation)
         {
             _moveImplementation = moveImplementation;
             _rotationImplementation = rotationImplementation;

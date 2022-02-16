@@ -57,30 +57,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\NoUse\DamageObject.cs" />
+    <Compile Include="Assets\Scripts\GameStarter.cs" />
+    <Compile Include="Assets\Scripts\InputController\PCInput.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\RotationShip.cs" />
+    <Compile Include="Assets\Scripts\Pools\AmmunitionPool.cs" />
     <Compile Include="Assets\Scripts\NoUse\IDamage.cs" />
     <Compile Include="Assets\Scripts\AccelerationMove.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\Scripts\MoveTransform.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Interface\IMove.cs" />
     <Compile Include="Assets\Scripts\Interface\IFire.cs" />
+    <Compile Include="Assets\Scripts\InputController\InputFactory.cs" />
     <Compile Include="Assets\Scripts\FireShip.cs" />
-    <Compile Include="Assets\Scripts\Interface\IRotation.cs" />
-    <Compile Include="Assets\Scripts\Ship.cs" />
-    <Compile Include="Assets\Scripts\GameStarter.cs" />
-    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Asteroid.cs" />
-    <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\Interface\IRotation.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Moving.cs" />
+    <Compile Include="Assets\Scripts\Pools\NameManager.cs" />
+    <Compile Include="Assets\Scripts\Ammo.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Interface\IInput.cs" />
     <Compile Include="Assets\Scripts\InputController\ConsoleInput.cs" />
-    <Compile Include="Assets\Scripts\InputController\PCInput.cs" />
-    <Compile Include="Assets\Scripts\InputController\InputFactory.cs" />
     <Compile Include="Assets\Scripts\Pools\EnemyPool.cs" />
-    <Compile Include="Assets\Scripts\Pools\NameManager.cs" />
-    <Compile Include="Assets\Scripts\Pools\AmmunitionPool.cs" />
-    <Compile Include="Assets\Scripts\Ammo.cs" />
-    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Asteroid3.cs" />
+    <Compile Include="Assets\Scripts\Asteroid2.cs" />
+    <Compile Include="Assets\Scripts\EmemyShip.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
