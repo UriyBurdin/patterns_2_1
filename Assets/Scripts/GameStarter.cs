@@ -20,7 +20,7 @@ namespace Asteroids
             loadGroupEnemy("Asteroid2", enemyPool, 2);
             loadGroupEnemy("Asteroid3", enemyPool, 2);
             loadGroupEnemy("EmemyShip", enemyPool, 2);
-            _enemyAll = FindObjectsOfType<EmemyShip>();
+            _enemyAll = FindObjectsOfType<Enemy>();
             startTarget(FindObjectOfType<Player>().transform);
 
 

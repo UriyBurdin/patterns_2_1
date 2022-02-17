@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal abstract class Ammo : MonoBehaviour
+    internal abstract class Ammo : MonoBehaviour, ITakeDamage
     {
 
         private Transform _rotPool;
@@ -65,7 +65,11 @@ namespace Asteroids
             }
         }
 
-
+        public void takeDamage(float Damage)
+        {
+            Health.ChangeCurrentHealth(Health.Current - Damage);
+            Debug.Log(Health.Current);
+        }
 
     }
 }

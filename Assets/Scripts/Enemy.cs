@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal abstract class Enemy : MonoBehaviour
+    internal abstract class Enemy : MonoBehaviour, ITakeDamage
     {
         private Camera _camera;
         private Transform _rotPool;
@@ -29,6 +29,12 @@ namespace Asteroids
             _thisMoving.Move(direction.x, direction.y, Time.deltaTime);
             // thisMoving.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
        }
+
+        public void takeDamage(float Damage)
+        {
+            Health.ChangeCurrentHealth(Health.Current - Damage);
+            Debug.Log(Health.Current);
+        }
         public Health Health
         {
             get

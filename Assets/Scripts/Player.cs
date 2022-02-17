@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class Player : PlayerData
+    internal sealed class Player : PlayerData, ITakeDamage
     {
 
         private Camera _camera;
@@ -48,11 +48,19 @@ namespace Asteroids
             }
         }
 
+        public void takeDamage(float Damage)
+        {
+            _health.ChangeCurrentHealth(_health.Current - Damage);
+            Debug.Log(_health.Current);
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
-             _health.ChangeCurrentHealth(_health.Current - 5f);
-            _hp = _health.Current;
-            Debug.Log(_hp);
+            if (collision.gameObject.GetComponent<Enemy>())
+            {
+                collision.gameObject.GetComponent<Enemy>().takeDamage(_damage);
+                takeDamage(_damage);
+            }
         }
     }
 }
