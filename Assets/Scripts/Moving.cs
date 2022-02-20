@@ -40,8 +40,5 @@ namespace Asteroids
                 accelerationMove.RemoveAcceleration();
             }
         }
-
-
-
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class Asteroid3 : Enemy
+    internal sealed class Asteroid3 : Enemy //для каждого Asteroid будет своя реализация
     {
         [SerializeField] public float _damage = 25f;
         [SerializeField] public float _hp = 30f;
@@ -17,9 +17,10 @@ namespace Asteroids
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.GetComponent<Player>())
+            var _player = collision.gameObject.GetComponent<Player>();
+            if (_player)
             {
-                collision.gameObject.GetComponent<Player>().takeDamage(_damage);
+                _player.TakeDamage(_damage);
             }
         }
 

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 namespace Asteroids
 {
@@ -14,7 +13,8 @@ namespace Asteroids
         {
             if (_hp <= 0)
             {
-               MonoBehaviour.Destroy(damagObject);
+                Object.Destroy(damagObject);
+
             }
             else
             {

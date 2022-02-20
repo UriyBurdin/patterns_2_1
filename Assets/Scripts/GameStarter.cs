@@ -5,29 +5,24 @@ namespace Asteroids
 {
     internal sealed class GameStarter : MonoBehaviour
     {
-        int capacityPoolEnemy = 6;
-        int createNewEnemy = 3;
-        Enemy enemy;
-        Enemy[] _enemyAll;
-
-        Ammo ammo;
+        private int _capacityPoolEnemy = 6;
+        private Enemy _enemy;
+        private Enemy[] _enemyAll;
 
         private void Start()
         {
 
-            EnemyPool enemyPool = new EnemyPool(capacityPoolEnemy);
-            loadGroupEnemy("Asteroid", enemyPool, 3);;
-            loadGroupEnemy("Asteroid2", enemyPool, 2);
-            loadGroupEnemy("Asteroid3", enemyPool, 2);
-            loadGroupEnemy("EmemyShip", enemyPool, 2);
+            EnemyPool _enemyPool = new EnemyPool(_capacityPoolEnemy);
+            loadGroupEnemy("Asteroid", _enemyPool, 3);;
+            loadGroupEnemy("Asteroid2", _enemyPool, 2);
+            loadGroupEnemy("Asteroid3", _enemyPool, 2);
+            loadGroupEnemy("EmemyShip", _enemyPool, 2);
             _enemyAll = FindObjectsOfType<Enemy>();
-            startTarget(FindObjectOfType<Player>().transform);
-
-
+            StartTarget(FindObjectOfType<Player>().transform);
         }
 
 
-        public void Update()
+        private void Update()
         {
 
             for (var i = 0; i < _enemyAll.Length; i++) //
@@ -43,19 +38,19 @@ namespace Asteroids
         {
             for (int i = countEnemy; i > 0; i--)
             {
-                enemy = enemyPool.GetEnemy(typeEnemy);
-                enemy.transform.position = startRandomPosition();
-                enemy.gameObject.SetActive(true);
+                _enemy = enemyPool.GetEnemy(typeEnemy);
+                _enemy.transform.position = StartRandomPosition();
+                _enemy.gameObject.SetActive(true);
             }
         }
 
 
-        Vector2 startRandomPosition()
+        Vector2 StartRandomPosition()
         {
             return new Vector2(Random.Range(-10,10),5);
         }
 
-        void startTarget(Transform target)
+        void StartTarget(Transform target)
         {
             for (var i = 0; i < _enemyAll.Length; i++) //
             {

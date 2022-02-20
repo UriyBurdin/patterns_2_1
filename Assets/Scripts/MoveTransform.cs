@@ -5,15 +5,9 @@ namespace Asteroids
     internal class MoveTransform : IMove
     {
         private Vector3 _move;
-
         private GameObject _moveObject;
-
         public float Speed { get; protected set; }
 
-        //public MoveTransform(float speed)
-        //{
-        //    Speed = speed;
-        //}
         public MoveTransform(GameObject moveObject, float speed)
         {
             _moveObject = moveObject;

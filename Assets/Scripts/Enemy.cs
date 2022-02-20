@@ -5,13 +5,12 @@ namespace Asteroids
 {
     internal abstract class Enemy : MonoBehaviour, ITakeDamage
     {
+        [SerializeField] public Transform target;
         private Camera _camera;
         private Transform _rotPool;
         private Health _health;
-        public Transform target;
-
-        public float _speed = 0.1f;
-        public float _acceleration = 50f;
+        private float _speed = 0.1f;
+        private float _acceleration = 50f;
         private Moving _thisMoving;
 
         public void Initialization()
@@ -30,9 +29,9 @@ namespace Asteroids
             // thisMoving.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
        }
 
-        public void takeDamage(float Damage)
+        public void TakeDamage(float damage)
         {
-            Health.ChangeCurrentHealth(Health.Current - Damage);
+            Health.ChangeCurrentHealth(Health.Current - damage);
             Debug.Log(Health.Current);
         }
         public Health Health

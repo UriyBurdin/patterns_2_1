@@ -20,8 +20,8 @@ namespace Asteroids
           //if (collision as ITakeDamage != null)
             if (collision.gameObject.GetComponent<ITakeDamage>()!=null) 
             {
-                collision.gameObject.GetComponent<ITakeDamage>().takeDamage(_damage);
-                takeDamage(_damage);
+                collision.gameObject.GetComponent<ITakeDamage>().TakeDamage(_damage);
+                TakeDamage(_damage);
             }
         }
 

@@ -65,9 +65,9 @@ namespace Asteroids
             }
         }
 
-        public void takeDamage(float Damage)
+        public void TakeDamage(float damage)
         {
-            Health.ChangeCurrentHealth(Health.Current - Damage);
+            Health.ChangeCurrentHealth(Health.Current - damage);
             Debug.Log(Health.Current);
         }
 

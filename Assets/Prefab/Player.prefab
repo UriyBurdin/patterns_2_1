@@ -132,12 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bb45d8426e89743bff044434d4bff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barrel: {fileID: 5165260390988875680}
   _speed: 100
-  _acceleration: 50
-  _hp: 100
-  _bullet: {fileID: 4290102927011726383, guid: 7f8d53174c3beab4f9fc0898620c3f87, type: 3}
-  _barrel: {fileID: 5165260390988875680}
-  _force: 500
 --- !u!50 &5165260389931959284
 Rigidbody2D:
   serializedVersion: 4
